@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 html概括</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><p><mark>本章内容只是对HTML简单的概括，多少会有表述缺漏，更多细节还得读者另行翻阅其他资料</mark></p>
+<h1><a id="_1"></a>一、思维导图</h1>
+<p>想要保存图片到本地，在图片上右击去保存即可<br>
+<img src="https://img-blog.csdnimg.cn/20190809120650762.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h4cnlrbA==,size_16,color_FFFFFF,t_70" alt="HTML个人总结"></p>
+<h1><a id="HTML_4"></a>二、HTML（超级文本标记语言）</h1>
+<h3><a id="1_5"></a>1.结构</h3>
+<pre><code>&lt;!DOCTYPE html&gt;                    &lt;!--声明部分--&gt;                  
+&lt;html lang="en"&gt;                   &lt;!--HTML开始标签--&gt; 
+	&lt;head&gt;						   &lt;!--头部开始标签--&gt; 
+		&lt;meta charset="UTF-8"&gt;     &lt;!--用于设置元信息,配置:charset=utf-8--&gt;
+		&lt;title&gt;结构&lt;/title&gt;		   &lt;!--网页标题--&gt; 
+		&lt;style&gt;&lt;/style&gt;            &lt;!--css样式--&gt; 
+	&lt;/head&gt;                        &lt;!--头部结束标签--&gt;
+	&lt;body&gt;                         &lt;!--主体开始标签--&gt; 
+		&lt;div id="one"&gt;&lt;/div&gt;       &lt;!--网页元素--&gt; 
+	&lt;/body&gt;                        &lt;!--主体结束标签--&gt; 
+&lt;/html&gt;                            &lt;!--HTML结束标签--&gt; 
+</code></pre>
+<h3><a id="2_21"></a>2.网页元素</h3>
+<h6><a id="1_24"></a>（1）注释</h6>
+<p><mark>css</mark>里的注释<code>/*这里写注释*/</code></p>
+<p><mark>HTML</mark>里的注释<code>&lt;!--在这里写注释--&gt;</code></p>
+<h6><a id="2_29"></a>（2）属性（属性名不区分大小写）</h6>
+<p><mark>认识</mark><code>&lt;div class="one"&gt;&lt;/div&gt;</code>其中<code>属性名是class 属性值是one</code><br>
+<mark>使用</mark><br>
+html</p>
+<pre><code>    &lt;div id="one"&gt;&lt;/div&gt;
+	&lt;div class="two"&gt;&lt;/div&gt;
+	&lt;div style="width:100px;height:200px;"&gt;&lt;/div&gt;
+</code></pre>
+<p>css：这里的width是css的属性，100px是值。#one是选择器，width:100px;是一个声明。</p>
+<pre><code>		#one{
+			width: 100px;
+			height: 100%;
+		}
+		.two{
+			width: 50px;
+			height: auto;
+		}
+</code></pre>
+<p>3.1<mark>核心属性</mark>（绝大多数标签可用的属性）<br>
+id、class、style</p>
+<p>3.2<mark>特有属性</mark>（某些标签特有）<br>
+例如：a标签的href、target<br>
+img标签的src、alt</p>
+<p>3.3<mark>H5拓展属性</mark><br>
+data-xxx</p>
+<pre><code>&lt;div data-one="one"&gt;&lt;/div&gt;
+</code></pre>
+<h6><a id="3_66"></a>（3）元素</h6>
+<p>1.1<mark>块元素</mark><br>
+<mark>特点：独占一行空间</mark>，默认宽100%，高由内容或子元素决定，也可指定宽高值。<mark>合适做页面框架或容器。</mark><br>
+演示：</p>
+<pre><code>   &lt;div&gt;块元素&lt;/div&gt;
+	&lt;div&gt;块元素&lt;/div&gt;
+	&lt;div&gt;块元素&lt;/div&gt;
+	&lt;span&gt;行内元素&lt;/span&gt;
+	&lt;span&gt;行内元素&lt;/span&gt;
+	&lt;span&gt;行内元素&lt;/span&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190810165753693.png" alt="在这里插入图片描述"><br>
+<mark>div</mark>：无自带属性；<br>
+<mark>h1~h6</mark>（1-6级标题标签）：自带font-size、font-weight、margin属性；<br>
+<mark>p</mark>(段落标签)：自带margin属性<br>
+<mark>ul</mark>(无序列表)<mark>li</mark>(列表项)：自带margin、padding、list-style属性。<br>
+<mark>ol</mark>(有序列表)<mark>li</mark><br>
+<mark>dl</mark>(有序列表)<mark>dt</mark>（列表标题）<mark>dd</mark>(列表内容)：自带margin</p>
+<p><mark>H5新增块元素</mark>：<mark>与div一样无样式</mark><br>
+header（头）、<br>
+nav（导航）、<br>
+article（主体）、<br>
+section（部分）、<br>
+footer（脚）、<br>
+aside（附属）。</p>
+<p>1.2<mark>行内元素</mark><br>
+特点：与其他行内元素共享一行，宽高由内容决定，且<mark>不能指定宽高</mark>，不能內嵌块元素，用于<mark>点缀网页、填充内容</mark></p>
+<p><mark>a</mark>（超链接）：自带样式color、text-decoration（字体装饰）、cursor（规定光标显示形状）；特有属性：<mark>herf</mark>{值：URL（“”）/相对路径/绝对路径/锚点/mailto(发邮件)}、<mark>target</mark>{值：_blank(新建窗口打开)/_self(同窗口打开)}。</p>
+<p><mark>img</mark>(图片)：{src=‘url/相对路径/绝对路径’、alt=‘找不到图片时替换的文本’ 、width:100%；根据父元素决定}<br>
+注：<mark>图片和背景图片的区别</mark>背景图片作为底色可以去覆盖元素，而图片一般不在其上覆盖元素，图片作为元素，而背景图片不作为元素。<br>
+<mark>span</mark>:没有自带属性。<br>
+<mark>strong</mark>（强调-粗体）<br>
+<mark>bold</mark>（强调-粗体）<br>
+<mark>b</mark>（强调-粗体）<br>
+<mark>i</mark>（强调-斜体）<br>
+<mark>em</mark>（强调-斜体）<br>
+<mark>textarea</mark>（多行文本）<br>
+<mark>input</mark>（文本框）<br>
+<mark>select</mark>（下拉列表）<br>
+<mark>u</mark>(下划线)</p>
+<p>1.3<mark>功能元素</mark><br>
+特点：既不是行内元素也不是块元素，因为table和form里面都含有块级元素和行内元素，有点缀网页作用。</p>
+<p><mark>table(表格)</mark>:<br>
+例子：</p>
+<pre><code>&lt;table class="tbl"&gt;
+		&lt;caption&gt;学生信息表&lt;/caption&gt;
+		&lt;thead&gt;
+			&lt;tr&gt;
+				&lt;th&gt;编号&lt;/th&gt;
+				&lt;th&gt;姓名&lt;/th&gt;
+				&lt;th&gt;性别&lt;/th&gt;
+				&lt;th&gt;手机号&lt;/th&gt;
+				&lt;th width="100"&gt;操作&lt;/th&gt;
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;!-- tbody不能缺省 --&gt;
+		&lt;tbody&gt;
+			&lt;tr&gt;
+				&lt;td rowspan="2"&gt;1&lt;/td&gt;
+				&lt;td&gt;terry&lt;/td&gt;
+				&lt;td&gt;male&lt;/td&gt;
+				&lt;td&gt;18812344321&lt;/td&gt;
+				&lt;td&gt;
+					&lt;a href=""&gt;删除&lt;/a&gt;
+					&lt;a href=""&gt;修改&lt;/a&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;td&gt;terry&lt;/td&gt;
+				&lt;td&gt;male&lt;/td&gt;
+				&lt;td&gt;18812344321&lt;/td&gt;
+				&lt;td&gt;
+					&lt;a href=""&gt;删除&lt;/a&gt;
+					&lt;a href=""&gt;修改&lt;/a&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;td&gt;3&lt;/td&gt;
+				&lt;td&gt;terry&lt;/td&gt;
+				&lt;td&gt;male&lt;/td&gt;
+				&lt;td&gt;18812344321&lt;/td&gt;
+				&lt;td&gt;
+					&lt;a href=""&gt;删除&lt;/a&gt;
+					&lt;a href=""&gt;修改&lt;/a&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/tbody&gt;
+		&lt;tfoot&gt;
+			&lt;tr&gt;
+				&lt;td colspan="5" align="right"&gt;合计1人&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/tfoot&gt;
+	&lt;/table&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190810162228560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h4cnlrbA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+caption(表格标题)<br>
+thead(表头部分)<br>
+tbody(表格主体)：&gt;tr(行)&gt;th(粗体居中，)/td(列)<br>
+tfoot(表底部分)</p>
+<p><mark>form(表单)</mark>：用于前后台交互，参数：action(后台接口地址)、method(请求方式)=‘get/post’、enctype(编码方式)=‘’。<br>
+例子：</p>
+<pre><code>&lt;form action="http://***" method="post" enctype="multipart"&gt;
+	&lt;table&gt;
+		&lt;tbody&gt;
+		     &lt;!-- 用户名 --&gt;
+			&lt;tr&gt;
+			    &lt;td&gt;用户名&lt;/td&gt;
+				&lt;td&gt;&lt;input type="text" name="username"&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;!-- 密码 --&gt;
+			&lt;tr&gt;
+				&lt;td&gt;密码&lt;/td&gt;
+				&lt;td&gt;&lt;input type="text" name="password"&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;!-- 真实姓名 --&gt;
+			&lt;tr&gt;
+				&lt;td&gt;真实姓名&lt;/td&gt;
+				&lt;td&gt;&lt;input type="text" name="nickname"&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;!-- email --&gt;
+			&lt;tr&gt;
+				&lt;td&gt;邮箱&lt;/td&gt;
+				&lt;td&gt;&lt;input type="text" name="email"&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;!-- 性别 --&gt;
+			&lt;tr&gt;
+				&lt;td&gt;性别&lt;/td&gt;
+				&lt;td&gt;
+				    &lt;label for="gender_male"&gt;
+				    	&lt;input type="radio" name="gender" value="male" checked="checked"&gt;男
+				    &lt;/label&gt;
+					&lt;label for="gender_famale"&gt;
+						&lt;input type="radio" name="gender" value="famale"&gt;女
+					&lt;/label&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;!-- 爱好 --&gt;
+			&lt;tr&gt;
+			    &lt;td&gt;爱好&lt;/td&gt;
+				&lt;td&gt;
+
+					&lt;label for=""&gt;
+						&lt;input type="checkbox" name="sing" &gt;唱
+					&lt;/label&gt;
+					&lt;label for=""&gt;
+						&lt;input type="checkbox" name="dance" &gt;跳
+					&lt;/label&gt;
+					&lt;label for=""&gt;
+						&lt;input type="checkbox" name="say" &gt;rap
+					&lt;/label&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;!-- 注册 --&gt;
+			&lt;tr&gt;
+				&lt;td colspan="2"&gt;
+					&lt;input type="submit" value="注册"&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/form&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190810161528160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h4cnlrbA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+input:{name(必有，作为参数识标)、value(默认值)、type（text：单行文本/password:密码框/submit:提交按钮/file:附件选择器/radio:单选按钮/checkbox:复选按钮）<mark>不同的值决定input的形式</mark>、placeholder(提示语)、checked(单选默认)}</p>
+<p>label:为input提供标记for=“”<br>
+select（菜单）&gt;option（菜单项）{value=“定义识标”}<br>
+textarea(多行文本域){placeholder=‘提示语’}</p>
+<h3><a id="3_252"></a>3.开发流程</h3>
+<h6><a id="1_253"></a>（1）编写网页</h6>
+<h6><a id="2_254"></a>（2）本地测试</h6>
+<h6><a id="3apache_255"></a>（3）部署：将项目上传到服务器，并并部署到apache.</h6>
+<h6><a id="4_256"></a>（4）网络测试</h6>
+</div>
+</body>
+
+</html>
