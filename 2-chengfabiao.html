@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2-chengfabiao</title>
+	<script>
+		for(j=9;j>=1;j--){
+			for(var i=1;i<=j;i++){
+				document.write(i+"*"+j+" = "+i*j+(i*j<10?"&nbsp;&nbsp":"&nbsp"));
+			}
+				document.write("<br/>");
+		}
+document.write("<br/>");
+document.write("<br/>");
+
+		var b =9;
+		while(b>=1){
+				var a = 1;
+				while(a<=b){
+				document.write(a+"*"+b+" = "+a*b+(a*b<10?"&nbsp,&nbsp":"&nbsp"));
+				a++;
+			}
+				document.write("<br/>");
+			b--;
+		}
+document.write("<br/>");
+document.write("<br/>");
+
+		var n = 9;
+		do{
+			var m = 1;
+			do {
+				document.write(m+"*"+n+" = "+m*n+(m*n<10?"&nbsp,&nbsp":"&nbsp"));
+				m++;
+			}while(m<=n);
+				document.write("<br/>");
+				n--;
+		}while(n>=1);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
