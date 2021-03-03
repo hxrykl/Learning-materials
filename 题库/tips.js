@@ -1,12 +1,18 @@
 JavaScript
 说一下原型链
 	三个关键词：__proto__，prototype，constructor
-	在任意一种引用类型中，都有一个__proto__属性，这个属性会指向创建当前类型的构造函数的原型prototype，
+	在引用类型中，都有一个__proto__属性，这个属性会指向创建当前类型的构造函数的原型prototype，
 	这个原型是对象，也有__proto__属性，指向的是创建当前构造函数的构造函数的原型prototype，
 	顺着__proto__往上找，最终会指向Object的原型prototypr，之后就是null。
 	引用类型中之所以能够调用toString方法，就是因为通过原型链继承了来自Object原型prototype的方法。
 	而consturctor是原型prototype的属性，指向的是函数本身，进而能够解释为什么被创建的对象能够通过constructor
 	确认创建自己的构造函数
+
+说一下继承
+	六种
+	原型链继承： Fun.prototype = new F()
+	借用构造函数继承： F.call(this, 'tony')
+
 理解 JavaScript 中的执行上下文和执行栈
 	执行上下文有：全局执行上下文（一个）、函数执行上下文（多个，执行函数时创建）
 	执行栈：先进后出原则执行全局执行上下文和函数执行上下文
