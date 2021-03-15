@@ -4,6 +4,7 @@ JavaScript
 	在引用类型中，都有一个__proto__属性，这个属性会指向创建当前类型的构造函数的原型prototype，
 	这个原型是对象，也有__proto__属性，指向的是创建当前构造函数的构造函数的原型prototype，
 	顺着__proto__往上找，最终会指向Object的原型prototypr，之后就是null。
+
 	引用类型中之所以能够调用toString方法，就是因为通过原型链继承了来自Object原型prototype的方法。
 	而consturctor是原型prototype的属性，指向的是函数本身，进而能够解释为什么被创建的对象能够通过constructor
 	确认创建自己的构造函数
@@ -39,8 +40,8 @@ new操作中发生了什么
 
 说一下 var、let、const
 	都会变量提升，let和const不会被初始化，var会初始化为undefined
-	let和const只会在块级作用域生效
-	const定义的变量不能修改
+	let和const只会在块级作用域生效、禁止重复声明变量、不会成为全局对象属性
+	const定义的变量不能修改、必须初始化值
 	
 说一下call、apply、bind区别
 	都是改变this指向
