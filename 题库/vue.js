@@ -1,6 +1,8 @@
 
 
 
+vue项目的优化
+
 
 3.0 响应式 Proxy 与 2.x Object.defineProperty
 	API:Proxy 劫持整个对象，能监听到对象属性的增删改 
@@ -12,3 +14,7 @@
 	性能：Proxy 比 Object.defineProperty 慢
 		 但初始化阶段 Proxy 不会对子对象递归成响应式，而 Object.defineProperty 会，
 		 因此初始化阶段 Proxy 性能更好
+
+vue生命周期
+
+说一下父组件和子组件之间的通信
