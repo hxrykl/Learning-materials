@@ -95,7 +95,12 @@ new操作中发生了什么
 	为了减少dom操作，需要事件委托，进而提高性能。
 	本质是通过事件冒泡，将事件绑定到目标元素的父元素上，触发事件时通过回调参数判定目标元素。
 
-	
-
 聊一下数据类型的判断
+	数据类型（9）：string、number、boolean、symbol、bigint、undefined，object、funciton、array
+
+	typeof:一般判断基本类型，object、array、null为object，因为js底层机器码null为0，对象为000。
+
+	instanceof:一般用来判断引用数据类型，Object、Function、Array、Date、RegExp等，通过是否父或祖
+	constructor
+	
 
