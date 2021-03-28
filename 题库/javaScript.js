@@ -100,7 +100,13 @@ new操作中发生了什么
 
 	typeof:一般判断基本类型，object、array、null为object，因为js底层机器码null为0，对象为000。
 
-	instanceof:一般用来判断引用数据类型，Object、Function、Array、Date、RegExp等，通过是否父或祖
-	constructor
+	instanceof:一般用来判断引用数据类型，Object、Function、Array、Date、RegExp等，通过原型链查找是否父或祖的原型
+		let c = new C(); c.__proto__ === C.prototype
+
+	constructor：判断原理基本与instanceof一致，区别在于constructor是属性，instanceof是关键字
+
+	Object.prototype.toString:（最准确、最广范）
+		Object.prototype.toString.call('.') // [object String]
+		Object.prototype.toString.call(null) ; // [object Null]
 	
 
