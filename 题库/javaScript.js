@@ -54,11 +54,12 @@ new操作中发生了什么
 	全局作用域下：var会成为全局对象属性，let和const不会
 	const声明时必须赋值，且不能修改变量值，但可修改变量指向的对象属性、值
 	变量提升：都会变量提升。var提升了创建及初始化，let、const提升了创建（暂时性死区）
+	var a = 1; if(true){console.log(a,'2'); let a = 3;}//Cannot access 'a' before initialization
 	
 说一下call、apply、bind区别
 	都是改变this指向
 	call与apply的区别在于第一个参数之后，call是传的是实参列表，apply传的是数组或类数组
-	call与bind区别在于，call是立即执行，bind不是
+	call与bind区别在于，call是立即执行，bind不是	
 
 谈一下箭头函数与普通函数
 	箭头函数是匿名函数，不能作为构造函数，没有原型，不能使用new，没有arguments，只能用解构 ... 解决 
