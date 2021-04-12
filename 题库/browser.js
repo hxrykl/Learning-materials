@@ -20,12 +20,17 @@
 举例请求响应状态码
 
 说一下浏览器缓存优化
-	Expires：响应头中的字段，发起请求的时间小于到期时间，则触发缓存，不再发起请求
+	强缓存：无需发送请求，直接读取浏览器本地缓存（硬盘和内存）
+	Pragma:仅有一个属性，no-cache禁用强缓存，优先级高
+	Cache-Control：优先级中
+		max-age=10 十秒后过期
+		no-cache 禁用强缓存
+		no-store 禁用强缓存和协商缓存，每次向服务器请求最新资源
+		public 允许中间代理的缓存
+		private 只允许个人的缓存
+		must-revalidate 过期后需要向服务器验证
+	Expires:日期值，系统时间超过时过期。 优先级低
 
-	last-modified：响应头中的字段，If-Modified-Since请求头取last-modified的值，服务器做对比，决定200或304
-		侦测时间最小单位为1s
-
-	Cache-Control：控制缓存，优先级高于expires
-		max-age=30 缓存30秒后过期
-		public 允许响应可以被客户端和代理服务器缓存
-		private 响应只允许客户端缓存
+	协商缓存：强缓存失效或禁用时，
+	Etag/If-None-Match：hash码，用于对比文件名称，文件修改但内容无变化时无法检测
+	Last-Modified/If-Modified-Since：文件最后修改时间，存在时间秒级以下误差
