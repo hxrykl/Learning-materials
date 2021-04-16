@@ -95,18 +95,21 @@ new操作中发生了什么
 	为了减少dom操作，需要事件委托，进而提高性能。
 	本质是通过事件冒泡，将事件绑定到目标元素的父元素上，触发事件时通过回调参数判定目标元素。
 
-聊一下数据类型的判断
-	数据类型（9）：string、number、boolean、symbol、bigint、undefined，object、funciton、array
+聊一下数据类型的判断（四种）
+	数据类型（10）：string、number、boolean、symbol、bigint、undefined、null,object、funciton、array
 
-	typeof:一般判断基本类型，object、array、null为object，因为js底层机器码null为0，对象为000。
+	typeof:一般判断基本类型，object、array、null为object，因为js判断类型用底层机器码低位标识，对象为000，null全为0。
 
 	instanceof:一般用来判断引用数据类型，Object、Function、Array、Date、RegExp等，通过原型链查找是否父或祖的原型
 		let c = new C(); c.__proto__ === C.prototype
 
-	constructor：判断原理基本与instanceof一致，区别在于constructor是属性，instanceof是关键字
+	constructor：判断原理基本与instanceof一致，
+		区别在于constructor是属性,只能判断当前的构造函数，instanceof是关键字，可以判断父祖构造函数
 
 	Object.prototype.toString:（最准确、最广范）
-		Object.prototype.toString.call('.') // [object String]
-		Object.prototype.toString.call(null) ; // [object Null]
+		Object.prototype.toString.call('.') // "[object String]"
+		Object.prototype.toString.call(null) ; // "[object Null]"
+		Object.prototype.toString.call(undefined) // "[object Undefined]"
+		Object.prototype.toString.call(Symbol()) // "[object Symbol]"
 	
 

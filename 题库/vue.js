@@ -17,19 +17,20 @@ vue项目的优化
 
 vue生命周期
 
-说一下父组件和子组件之间的通信
+说一下父组件和子组件之间的通信（七种）
 	prop、$emit、
 
 	$attrs、$listeners：
 		子组件定义v-bind="$attrs"获取非prop的父组件在子组件设置的属性
-		inheritAttrs
+		inheritAttrs:false 不希望组件的根元素继承属性
+		
+	this.$parent访问该组件的父组件、this.$children访问该组件的子组件
 
 	provide、inject、，父组件通过provide提供变量，子孙组件通过inject注入使用变量，轻松实现跨级访问祖先组件的数据
 
 	EventBus.$on()监听 EventBus.$emit()分发 EventBus.$off()取消监听
 
-	Vuex:state、getter、mutation、action
 
-	this.$parent访问该组件的父组件、this.$children访问该组件的子组件
+	Vuex:state、getter、mutation、action
 
 	$root设置根
