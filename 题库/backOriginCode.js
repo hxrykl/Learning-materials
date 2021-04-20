@@ -6,6 +6,7 @@
 
 实现一个instanceof
 	function newInstanceof(left, right) {
+		if(typeof left !== 'object' || typeof left !== 'function') return false
 		let proto = left.__proto__
 		let prototype = right.prototype
 		while(true){
