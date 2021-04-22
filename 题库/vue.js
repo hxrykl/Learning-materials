@@ -4,7 +4,7 @@
 vue项目的优化
 
 
-3.0 响应式 Proxy 与 2.x Object.defineProperty
+3.0 响应式 Proxy 与 2.x Object.defineProperty（三点）
 	API:Proxy 劫持整个对象，能监听到对象属性的增删改 
 		Object.defineProperty劫持对象属性的访问和修改，不能监听到对象属性的增删
 
@@ -23,7 +23,7 @@ vue生命周期
 	$attrs、$listeners：
 		子组件定义v-bind="$attrs"获取非prop的父组件在子组件设置的属性
 		inheritAttrs:false 不希望组件的根元素继承属性
-		
+
 	this.$parent访问该组件的父组件、this.$children访问该组件的子组件
 
 	provide、inject、，父组件通过provide提供变量，子孙组件通过inject注入使用变量，轻松实现跨级访问祖先组件的数据

@@ -29,7 +29,7 @@
 		public 允许中间代理的缓存
 		private 只允许个人的缓存
 		must-revalidate 过期后需要向服务器验证
-	Expires:日期值，系统时间超过时过期。 优先级低
+	Expires:日期值，小于系统时间时过期。 优先级低
 
 	协商缓存：强缓存失效或禁用时，
 	Etag/If-None-Match：hash码，用于对比文件名称，文件修改但内容无变化时无法检测
