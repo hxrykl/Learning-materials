@@ -72,9 +72,10 @@ vue生命周期
 		子组件中 this.$attrs 获取非prop、class、style的父组件在子组件上设置的属性
 		inheritAttrs: false 不希望当前组件的根元素继承属性
 
+		$listeners：获取父组件在根组件上绑定的所有事件
 		子组件中设置 v-on="$listeners" 则可以从孙组件传递事件到父组件
 
-	this.$parent访问该组件的父组件、this.$children访问该组件的子组件
+	this.$parent访问该组件的父组件、this.$children访问该组件的子组件 （节制使用：组件复用混乱）
 
 	provide、inject、，父组件通过provide提供变量，子孙组件通过inject注入使用变量，轻松实现跨级访问祖先组件的数据
 
