@@ -1,6 +1,6 @@
 
-说一下原型链
-	三个关键词：__proto__，prototype，constructor
+说一下原型链（三个关键词）
+	__proto__，prototype，constructor
 	在引用类型中，都有一个__proto__属性，这个属性会指向创建当前类型的构造函数的原型prototype，
 	这个原型是对象，也有__proto__属性，指向的是创建当前构造函数的构造函数的原型prototype，
 	顺着__proto__往上找，最终会指向Object的原型prototypr，之后就是null。
@@ -9,8 +9,7 @@
 	而consturctor是原型prototype的属性，指向的是函数本身，进而能够解释为什么被创建的对象能够通过constructor
 	确认创建自己的构造函数
 
-说一下继承
-	六种
+说一下继承（六种）
 	原型链继承： Fun.prototype = new F() 新实例的原型指向父类的实例
 	借用构造函数继承： F.call(this, 'tony') 只能继承父构造函数的属性
 	组合继承：原型链继承与借用构造函数继承结合，克隆父构造函数属性又继承父类构造函数原型
@@ -63,9 +62,11 @@ new操作中发生了什么
 	call与apply的区别在于第一个参数之后，call是传的是实参列表，apply传的是数组或类数组
 	call与bind区别在于，call是立即执行，bind不是	
 
-谈一下箭头函数与普通函数
-	箭头函数是匿名函数，不能作为构造函数，没有原型，不能使用new，没有arguments，只能用解构 ... 解决 
-	不绑定this，会捕获其所在的上下文的this值（箭头函数被定义时所在作用域的this），作为自己的this值，不能当做Generator函数
+谈一下箭头函数与普通函数区别（四点）
+	没有自己的this，会捕获其所在的上下文的this值（箭头函数被定义时所在作用域的this），作为自己的this值
+	不能作为构造函数，没有原型prototype，不能使用new
+	不能当做Generator函数，不能使用 yield 关键字
+	没有arguments，只能用解构 ... 解决 
 
 说一下this指向
 	在函数调用时，才能确定this指向，谁调用指向谁，链式调用指向最后一个，没有明确调用对象，指向window
