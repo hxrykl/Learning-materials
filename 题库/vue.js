@@ -49,9 +49,9 @@ vm.$set()实现
 		return val
 	}
 
-3.0 响应式 Proxy 与 2.x Object.defineProperty（三点）
-	API:Proxy 劫持整个对象，能监听到对象属性的增删改 
-		Object.defineProperty劫持对象属性的访问和修改，不能监听到对象属性的增删
+3.0 响应式 Proxy 与 2.x Object.defineProperty 区别（三点）
+	API作用:Proxy 劫持整个对象，能监听到对象属性的新增、删除、修改 
+		Object.defineProperty劫持对象属性的访问和修改，不能监听到对象属性的新增、删除
 
 	兼容性：Proxy 支持现代主流浏览器，不支持IE
 		   Object.defineProperty 支持主流浏览器及IE+9
