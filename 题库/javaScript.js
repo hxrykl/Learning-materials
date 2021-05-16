@@ -101,7 +101,9 @@ new操作中发生了什么
 聊一下数据类型的判断（四种）
 	数据类型（10）：string、number、boolean、symbol、bigint、undefined、null,object、funciton、array
 
-	typeof:一般判断基本类型，object、array、null为object，因为js判断类型用底层机器码低位标识，对象为000，null全为0。
+	typeof:
+		用来判断 number、string、boolean、undefined、symbol、bigint、function;
+		object、array、null为object，因为js判断类型用底层机器码低位标识，对象为000，null全为0。
 
 	instanceof:一般用来判断引用数据类型，Object、Function、Array、Date、RegExp等，通过原型链查找是否父或祖的原型
 		let c = new C(); c.__proto__ === C.prototype
@@ -114,5 +116,15 @@ new操作中发生了什么
 		Object.prototype.toString.call(null) ; // "[object Null]"
 		Object.prototype.toString.call(undefined) // "[object Undefined]"
 		Object.prototype.toString.call(Symbol()) // "[object Symbol]"
+
+typeof 的原理
+	js 在底层存储变量时，用机器码的低位1-3 位存储其变量类型信息
+	000：对象
+	010：浮点数
+	100：字符串
+	110：布尔
+	1：整数
+	null机器码均为0
+	undefined：-2^30
 	
 
