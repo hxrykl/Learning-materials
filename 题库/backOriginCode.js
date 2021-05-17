@@ -2,6 +2,23 @@
 
 实现 const
 	
+实现一个call
+	Function.prototype.newCall = function(context, ...args) {
+		let newContext = context || window //不传时默认window
+		newContext.fn = this //给传入的对象添加一个属性保存调用者,这个this就是调用者(方法)
+		let result = newContext.fn(...args) //将调用者的执行结果保存起来
+		delete newContext.fn //销毁避免污染
+		return result
+	}
+实现一个apply
+	Function.prototype.newApply = function(context, arg) {
+		let newContext = context || window
+		newContext.fn = this
+		let result = newContext.fn(arg)
+		delete newContext.fn 
+		return result
+	}
+
 实现一个bind
 	Function.prototype.newBind = function(context) {
 		if(typeof this !== 'function'){
