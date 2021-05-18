@@ -3,14 +3,29 @@
 
 vue项目的优化
 
-Object.defineProperty实现深度监听
-	function observe(obj) {
+说一说computed、watch、methods区别
+	computed：计算缓存，依赖属性改变时再次执行、响应式
+	watch：初始化时不监听，设置immediate可初始化监听
+	methods: 每次获取都执行一次
+
+理解computed的实现原理
+	事件的发布-订阅模式来监听对象数据的变化实现的
+	new Vue({}) 
+	this._init(options)
+	initComputed(vm, vm.$options.computed)
+
+
+
+
+
+请对 Object.defineProperty 实现深度监听
+	function observe(obj) { //
 		Object.key(obj).map(item => {
 			defineReactive(obj, item, obj[item])
 		})
 	}
 	function defineReactive(obj, key, val) {
-		if(typeof val === 'object') observe(val)
+		if(Object.prototype.toString.call(val) === "[object Object]") observe(val)
 		Object.defineProperty(obj, key, {
 			enumerable: true,//可枚举
 			configurable: true,//可删除修改

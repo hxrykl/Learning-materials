@@ -102,7 +102,7 @@ new操作中发生了什么
 	数据类型（10）：string、number、boolean、symbol、bigint、undefined、null,object、funciton、array
 
 	typeof:
-		用来判断 number、string、boolean、undefined、symbol、bigint、function;
+		用来判断 number、string、boolean、undefined、symbol、bigint、function（七种类型）
 		object、array、null为object，因为js判断类型用底层机器码低位标识，对象为000，null全为0。
 
 	instanceof:一般用来判断引用数据类型，Object、Function、Array、Date、RegExp等，通过原型链查找是否父或祖的原型
