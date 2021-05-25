@@ -51,4 +51,22 @@
 	}
 
 实现深浅拷贝
+	递归：
+	function deepClone(obj) {
+		if(obj === null) return null
+		let object = {}
 
+		for(let key in obj) {
+
+			if(typeof obj[key] === 'object') object[key] = deepClone(obj[key])
+			else object[key] = obj[key]
+
+		}
+
+		return object
+	}
+
+	json方式：
+	function deepClone(obj) {
+		return JSON.parse(JSON.stringify(obj))
+	}
