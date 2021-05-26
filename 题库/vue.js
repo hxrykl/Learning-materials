@@ -64,6 +64,8 @@ vm.$set()实现
 		return val
 	}
 
+vm.$nextTick原理
+
 3.0 响应式 Proxy 与 2.x Object.defineProperty 区别（三点）
 	API作用:Proxy 劫持整个对象，能监听到对象属性的新增、删除、修改 
 		Object.defineProperty劫持对象属性的访问和修改，不能监听到对象属性的新增、删除
@@ -76,6 +78,10 @@ vm.$set()实现
 		 因此初始化阶段 Proxy 性能更好
 
 vue生命周期
+	created
+	mounted
+	updated
+	destoryed
 
 
 说一下父组件和子组件之间的通信（七种）

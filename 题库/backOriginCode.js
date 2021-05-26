@@ -70,3 +70,15 @@
 	function deepClone(obj) {
 		return JSON.parse(JSON.stringify(obj))
 	}
+
+	Object.create()实现
+	function deepClone(obj) {
+		let copy = Object.create(Object.getPrototypeOf(obj))
+
+		Object.keys(obj).forEach( name => {
+			let desc = Object.getOwnPropertyDescriptor(obj, name);
+    		Object.defineProperty(copy, name, desc);
+		})
+
+		return copy
+	}
