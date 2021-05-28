@@ -26,8 +26,8 @@ new操作中发生了什么
 	执行栈：先进后出原则执行全局执行上下文和函数执行上下文
 
 说一下事件循环（event loop）
-	宏任务：script、setTimeout、setInterval、I/O、UI交互事件、postMessage
-	微任务:Promise.then、MutaionObserver、async await 之后代码
+	宏任务：script、setTimeout、setInterval、MessageChannel、I/O、UI交互事件、postMessage、setImmediate
+	微任务:Promise.then、MutationObserver（变动观察器）、async await 之后代码
 	当一个宏任务执行完毕，立即执行当前微任务队列中的所有微任务，页面渲染，之后再执行下一个宏任务，以此循环
 
 深度说一下闭包
