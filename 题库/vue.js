@@ -65,6 +65,33 @@ vm.$set()实现
 	}
 
 vm.$nextTick原理
+	使用异步方式优先级： Promise > MutationObserver（监听DOM修改事件） > setImmediate > setTimeout
+
+	const callbacks = [] //一个task内存放多个nextTick
+	let pending = false //为了拦截多个nextTick时只执行一次flushCallbacks
+
+	function flushCallbacks () {
+	  pending = false
+	  const copies = callbacks.slice(0)
+	  callbacks.length = 0
+	  for (let i = 0; i < copies.length; i++) {
+	    copies[i]( "i")
+	  }
+	}
+	let timerFunc = () => {
+		const p = Promise.resolve()
+		p.then(flushCallbacks)
+	}
+	function nextTick(cb, ctx) {
+		callbacks.push(() => {
+		    cb.call(ctx)
+		})
+		if(!pending){
+			pending = true
+			timerFunc()
+		}
+		
+	}
 
 3.0 响应式 Proxy 与 2.x Object.defineProperty 区别（三点）
 	API作用:Proxy 劫持整个对象，能监听到对象属性的新增、删除、修改 
