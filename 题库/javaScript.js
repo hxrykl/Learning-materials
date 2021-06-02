@@ -127,5 +127,11 @@ typeof 的原理
 	1：整数
 	null机器码均为0
 	undefined：-2^30
+
+基本类型包装器
+	为了实现基本数据类型直接调用方法 '12345'.substring(5,15)
+		创建String类型的一个实例 var _realMessage = new String("12345");
+		在实例上调用指定的方法 var myMessage = _realMessage.substring(5,15);
+		销毁这个实例 _realMessgae = null;
 	
 
