@@ -65,7 +65,7 @@ vm.$set()实现
 	}
 
 vm.$nextTick原理
-	使用异步方式优先级： Promise > MutationObserver（监听DOM修改事件） > setImmediate > setTimeout
+	使用异步方式优先级： Promise > MutationObserver（监听DOM修改事件,已摒弃） > setImmediate > MessageChannel.postMessage > setTimeout
 
 	const callbacks = [] //一个task内存放多个nextTick
 	let pending = false //为了拦截多个nextTick时只执行一次flushCallbacks
@@ -92,6 +92,35 @@ vm.$nextTick原理
 		}
 		
 	}
+
+	vue3
+		const p = Promise.resolve()
+		export function nextTick(fn?: () => void): Promise<void> {
+		  return fn ? p.then(fn) : p
+		}
+		const queue: (Job | null)[] = []
+		export function queueJob(job: Job) {
+		  // 去重 
+		  if (!queue.includes(job)) {
+		    queue.push(job)
+		    queueFlush()
+		  }
+		}
+		export function queuePostFlushCb(cb: Function | Function[]) {
+		  if (!isArray(cb)) {
+		    postFlushCbs.push(cb)
+		  } else {
+		    postFlushCbs.push(...cb)
+		  }
+		  queueFlush()
+		}
+		function queueFlush() {
+		  // 避免重复调用flushJobs
+		  if (!isFlushing && !isFlushPending) {
+		    isFlushPending = true
+		    nextTick(flushJobs)
+		  }
+		}
 
 3.0 响应式 Proxy 与 2.x Object.defineProperty 区别（三点）
 	API作用:Proxy 劫持整个对象，能监听到对象属性的新增、删除、修改 
