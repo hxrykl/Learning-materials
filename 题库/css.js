@@ -50,3 +50,11 @@ BFC
 	优化：
 		减少重排范围：不要使用table布局
 		减少重排次数
+
+div垂直水平居中
+	position:
+		margin-left: -50px + left: 50%
+		top/bottom/left/right 0 + magin: auto
+		transfrom:
+
+讲一下浏览器渲染HTML的原理

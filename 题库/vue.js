@@ -3,6 +3,9 @@
 
 vue项目的优化
 
+vue双向绑定原理解析
+	
+
 说一说computed、watch、methods区别
 	computed：计算缓存，依赖属性改变时再次执行、响应式
 	watch：初始化时不监听，设置immediate可初始化监听
@@ -121,6 +124,8 @@ vm.$nextTick原理
 		    nextTick(flushJobs)
 		  }
 		}
+
+render函数实现
 
 3.0 响应式 Proxy 与 2.x Object.defineProperty 区别（三点）
 	API作用:Proxy 劫持整个对象，能监听到对象属性的新增、删除、修改 
