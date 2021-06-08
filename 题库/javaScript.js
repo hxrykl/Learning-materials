@@ -2,7 +2,7 @@
 说一下原型链（三个关键词）
 	__proto__，prototype，constructor
 	在引用类型中，都有一个__proto__属性，这个属性会指向创建当前类型的构造函数的原型prototype，
-	这个原型是对象，也有__proto__属性，指向的是创建当前构造函数的构造函数的原型prototype，
+	这个原型是对象，也有__proto__属性，指向的是创建当前构造函数的构造函数的原型prototype，(一般是Object的原型)
 	顺着__proto__往上找，最终会指向Object的原型prototypr，之后就是null。
 
 	引用类型中之所以能够调用toString方法，就是因为通过原型链继承了来自Object原型prototype的方法。
@@ -135,6 +135,9 @@ typeof 的原理
 		创建String类型的一个实例 var _realMessage = new String("12345");
 		在实例上调用指定的方法 var myMessage = _realMessage.substring(5,15);
 		销毁这个实例 _realMessgae = null;
+
+模板字符串
+	反引号` ` 加 ${};//可以在里面执行js代码
 
 0.1+0.2=0.30000000000000004
 	
