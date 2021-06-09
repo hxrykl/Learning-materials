@@ -9,6 +9,12 @@
 	而consturctor是原型prototype的属性，指向的是函数本身，进而能够解释为什么被创建的对象能够通过constructor
 	确认创建自己的构造函数
 
+基本类型包装器
+	为了实现基本数据类型直接调用方法 '12345'.substring(5,15)
+		创建String类型的一个实例 var _realMessage = new String("12345");
+		在实例上调用指定的方法 var myMessage = _realMessage.substring(5,15);
+		销毁这个实例 _realMessgae = null;
+
 说一下继承（六种）
 	原型链继承： Fun.prototype = new F() 新实例的原型指向父类的实例
 	借用构造函数继承： F.call(this, 'tony') 只能继承父构造函数的属性
@@ -56,9 +62,14 @@ new操作中发生了什么
 		const声明时必须赋值，且不能修改变量值，但可修改变量指向的对象属性、
 	
 	变量提升：都会变量提升。var提升了创建及初始化，let、const提升了创建（暂时性死区）
+		var 变量提升会给到undefined（未定义） let变量提升会给到uninitialized（未初始化）
 		var a = 1; if(true){console.log(a,'2'); let a = 3;}//Cannot access 'a' before initialization
 
 为什么会有变量提升？
+	解析阶段：JS会检查语法，并对函数进行预编译。
+	执行阶段：逐条解释每条语句并执行
+	解析和预编译过程中的声明提升可以提高性能，让函数可以在执行时预先为变量分配栈空间
+	声明提升还可以提高JS代码的容错性，使一些不规范的代码也可以正常执行
 	
 说一下call、apply、bind区别
 	都是改变this指向
@@ -130,11 +141,6 @@ typeof 的原理
 	null机器码均为0
 	undefined：-2^30
 
-基本类型包装器
-	为了实现基本数据类型直接调用方法 '12345'.substring(5,15)
-		创建String类型的一个实例 var _realMessage = new String("12345");
-		在实例上调用指定的方法 var myMessage = _realMessage.substring(5,15);
-		销毁这个实例 _realMessgae = null;
 
 0.1+0.2=0.30000000000000004
 	
