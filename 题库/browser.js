@@ -18,6 +18,13 @@
 
 CSRF（跨站请求伪造）攻击
 	通过被攻击者网站本地cookie信息加上攻击者网站img标签的src或提交表单发起的请求（get/post）
+	防御手段：（3 种）
+		验证 HTTP Referer 字段
+			Referer的值是当前所在页面的URL,但浏览器IE6有方法篡改Referer值，
+			新的浏览器也允许用户取消提供Referer值
+
+		在请求地址中添加 token 并验证
+		在 HTTP 头中自定义属性并验证
 
 说一下浏览器单线程优化
 
@@ -51,7 +58,9 @@ CSRF（跨站请求伪造）攻击
 说一下ssl优点
 
 聊一下跨域问题
-
+	JSONP：script、img获取资源的标签是没有跨域限制
+	CORS（跨域资源共享Cross-origin resource sharing）：简单请求和非简单请求。
+	Proxy:
 
 举例请求响应状态码
 

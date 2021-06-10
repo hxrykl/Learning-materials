@@ -22,4 +22,6 @@ export与export default的区别
 	静态资源CDN部署
 	更新资源非覆盖式发布
 
+CDN原理
+
 	
