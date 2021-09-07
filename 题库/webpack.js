@@ -7,7 +7,7 @@
 
 
 
-Tree Shaking
+Tree Shaking（摇树）
 	对于模块中未引入的代码不进行打包处理
 
 Code Splitting 
