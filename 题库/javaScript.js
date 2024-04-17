@@ -1,13 +1,11 @@
 
-说一下原型链（三个关键词）
-	__proto__，prototype，constructor
-	在引用类型中，都有一个__proto__属性，这个属性会指向创建当前类型的构造函数的原型prototype，
-	这个原型是对象，也有__proto__属性，指向的是创建当前构造函数的构造函数的原型prototype，(一般是Object的原型)
-	顺着__proto__往上找，最终会指向Object的原型prototypr，之后就是null。
+说一下原型链（两个关键词）
+	一个实例对象，在调用属性或方法时，会依次从实例本身、构造函数原型、构造函数原型的原型... 
+	上去寻找，查看是否有对应的属性或方法。这样的寻找方式就好像一个链条一样，
+	从实例对象，一直找到 Object.prototype ，专业上称之为原型链。
+	__proto__，prototype
 
-	引用类型中之所以能够调用toString方法，就是因为通过原型链继承了来自Object原型prototype的方法。
-	而consturctor是原型prototype的属性，指向的是函数本身，进而能够解释为什么被创建的对象能够通过constructor
-	确认创建自己的构造函数
+	例子：
 
 基本类型包装器
 	为了实现基本数据类型直接调用方法 '12345'.substring(5,15)
@@ -24,8 +22,11 @@
 	寄生组合式继承：
 
 new操作中发生了什么
-	创建一个新的空对象，
-	新的对象有一个__proto__属性指向构造函数的原型prototype
+	1 创建一个新的空对象，
+	2 将构造函数的作用域赋值给新对象（这样this就指向了新对象）
+	3 执行构造函数中的代码（为新对象添加实例属性和实例方法）
+	4 返回新对象
+	新的对象有一个__proto__属性指向构造函数的原型prototype 
 
 理解 js 中的执行上下文和执行栈
 	执行上下文有：全局执行上下文（一个）、函数执行上下文（多个，执行函数时创建）eval执行上下文
@@ -33,13 +34,19 @@ new操作中发生了什么
 
 说一下事件循环（event loop）
 	在浏览器中，为了维护用户点击、页面渲染、脚本执行，网络请求等事件处理，采用事件循环机制。
-	宏任务：script、setTimeout、setInterval、MessageChannel、I/O、UI交互事件、postMessage、setImmediate
+	宏任务：script、setTimeout、setInterval、postMessage、MessageChannel、I/O、UI交互事件、setImmediate
 	微任务:Promise.then、MutationObserver（变动观察器）、async await 之后代码
 	v8单线程,当一个宏任务同步任务执行完毕，立即执行当前微任务队列中的所有微任务，页面渲染，之后再执行宏任务队列中的下一个宏任务，以此循环
 
+谈谈Promise
+
+深入async await
+	
+
+
 深度说一下闭包
 	本质是函数嵌套函数。通过函数内部可访问函数外部的参数及变量这一特性，当内部嵌套函数作为返回值时，
-	函数的参数及变量不会被垃圾回收机制回收（嵌内部套函数未执行前，函数变量不能被释放）。
+	函数的参数及变量不会被垃圾回收机制回收（内部嵌套函数未执行前，函数变量不能被释放）。
 	因此消耗一定内存，但也保护了函数内部变量不会被污染。
 
 谈一下垃圾回收
@@ -63,24 +70,27 @@ new操作中发生了什么
 	
 	变量提升：都会变量提升。var提升了创建及初始化，let、const提升了创建（暂时性死区）
 		var 变量提升会给到undefined（未定义） let变量提升会给到uninitialized（未初始化）
-		var a = 1; if(true){console.log(a,'2'); let a = 3;}//Cannot access 'a' before initialization
+		var a = 1; if(true){console.log(a,'2'); let a = 3;}//Cannot access 'a' before initialization 初始化前无法访问“a”
 
 为什么会有变量提升？
+	js 和其他语言一样，都要经历编译和执行阶段
 	解析阶段：JS会检查语法，并对函数进行预编译。
 	执行阶段：逐条解释每条语句并执行
-	解析和预编译过程中的声明提升可以提高性能，让函数可以在执行时预先为变量分配栈空间
-	声明提升还可以提高JS代码的容错性，使一些不规范的代码也可以正常执行
+	1 解析和预编译过程中的声明提升可以提高性能，让函数可以在执行时预先为变量分配栈空间
+	2 声明提升还可以提高JS代码的容错性，使一些不规范的代码也可以正常执行
+	
 	
 说一下call、apply、bind区别
 	都是改变this指向
-	call与apply的区别在于第一个参数之后，call是传的是实参列表，apply传的是数组或类数组
-	call与bind区别在于，call是立即执行，bind不是	
+	1 call与apply的区别在于第一个参数之后，call是传的是实参列表，apply传的是数组或类数组
+	2 call与bind区别在于，call是立即执行，bind不是	
 
-谈一下箭头函数与普通函数区别（四点）
-	没有自己的this，会捕获其所在的上下文的this值（箭头函数被定义时所在作用域的this），作为自己的this值
-	不能作为构造函数，没有原型prototype，不能使用new
-	不能当做Generator函数，不能使用 yield 关键字
-	没有arguments，只能用解构 ... 解决 
+谈一下箭头函数与普通函数区别（五点）
+	1 没有自己的this，会捕获其所在的上下文的this值（箭头函数被定义时所在作用域的this），作为自己的this值
+	2 不能作为构造函数，因为没有原型prototype，也就不能使用new
+	3 不能当做Generator函数，不能使用 yield 关键字
+	4 没有arguments，取而代之用rest参数...代替arguments对象
+	5 call、apply、bind 无法改变箭头函数中this的指向
 
 说一下this指向
 	在函数调用时，才能确定this指向，谁调用指向谁，链式调用指向最后一个，没有明确调用对象，指向window
@@ -113,7 +123,7 @@ new操作中发生了什么
 	本质是通过事件冒泡，将事件绑定到目标元素的父元素上，触发事件时通过回调参数判定目标元素。
 
 聊一下数据类型的判断（四种）
-	数据类型（10）：string、number、boolean、symbol、bigint、undefined、null,object、funciton、array
+	数据类型（10）：基本数据 string、number、boolean、symbol、bigint、undefined、null,引用数据 object、funciton、array
 
 	typeof:
 		用来判断 number、string、boolean、undefined、symbol、bigint、function（七种类型）
@@ -122,14 +132,20 @@ new操作中发生了什么
 	instanceof:一般用来判断引用数据类型，Object、Function、Array、Date、RegExp等，通过原型链查找是否父或祖的原型
 		let c = new C(); c.__proto__ === C.prototype
 
-	constructor：判断原理基本与instanceof一致，
-		区别在于constructor是属性,只能判断当前的构造函数，instanceof是关键字，可以判断父祖构造函数
-
 	Object.prototype.toString:（最准确、最广范）
 		Object.prototype.toString.call('.') // "[object String]"
 		Object.prototype.toString.call(null) ; // "[object Null]"
 		Object.prototype.toString.call(undefined) // "[object Undefined]"
 		Object.prototype.toString.call(Symbol()) // "[object Symbol]"
+
+	constructor：判断原理基本与instanceof一致，
+		区别在于constructor是属性,只能判断当前的构造函数，instanceof是关键字，可以判断父祖构造函数
+
+判断是否数组的方法
+ 	1 instanceof
+ 	2 Array.prototype.isPrototypeOf(arr)
+ 	3 Object.prototype.toString.call(arr)
+ 	4 Array.isArray(arr)
 
 typeof 的原理
 	js 在底层存储变量时，用机器码的低位1-3 位存储其变量类型信息
